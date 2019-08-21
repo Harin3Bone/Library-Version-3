@@ -12,7 +12,7 @@ import java.awt.print.Book;
 import java.util.List;
 
 @Component
-public class DatabaseInitialzr implements CommandLineRunner {
+public class Database implements CommandLineRunner {
     @Autowired
     private BookRepository bookRepository;
 
