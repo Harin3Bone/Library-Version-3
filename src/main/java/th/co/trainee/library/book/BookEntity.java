@@ -1,8 +1,5 @@
 package th.co.trainee.library.book;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -13,15 +10,15 @@ public class BookEntity {
     @Column(name = "Id")
     private int bookId;
 
-    @NotNull
-    @Column(name = "Name")
+    @NotNull(message = "Name cannot be null")
+    @Column(name = "book_name")
     private String bookName;
 
     @NotNull
-    @Column(name = "Code")
+    @Column(name = "book_code")
     private String bookCode;
 
-    @NotNull
+    @NotNull(message = "Author cannot be null")
     @Column(name = "Author")
     private String bookAuthor;
 
@@ -35,17 +32,15 @@ public class BookEntity {
     @Column(name = "Status")
     private BookStatus bookStatus;
 
-    public BookEntity(){
-
-    }
-
-    public BookEntity(@NotNull String bookName, @NotNull String bookCode, @NotNull String bookAuthor,
-                      @NotNull BookCategory bookCategory, @NotNull BookStatus bookStatus) {
-        this.bookName = bookName;
-        this.bookCode = bookCode;
-        this.bookAuthor = bookAuthor;
-        this.bookCategory = bookCategory;
-        this.bookStatus = bookStatus;
+    public static BookEntity create(@NotNull String bookName, @NotNull String bookCode, @NotNull String bookAuthor,
+                                    @NotNull BookCategory bookCategory, @NotNull BookStatus bookStatus){
+        var book = new BookEntity();
+        book.setBookName(bookName);
+        book.setBookCategory(bookCategory);
+        book.setBookCode(bookCode);
+        book.setBookAuthor(bookAuthor);
+        book.setBookStatus(bookStatus);
+        return book;
     }
 
     public int getBookId() {

@@ -5,26 +5,22 @@ import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private String userId;
 
     @NotNull
     @Column(name = "FirstName")
-    private String userFirstName;
+    protected String userFirstName;
 
     @NotNull
     @Column(name = "LastName")
-    private String userLastName;
+    protected String userLastName;
 
     @NotNull
     @Column(name = "UserName")
-    private String userName;
+    protected String userName;
 
     @NotNull
     @Column(name = "Password")
-    private String userPassword;
+    protected String userPassword;
 
     public User(){
 
@@ -36,14 +32,6 @@ public class User {
         this.userLastName = userLastName;
         this.userName = userName;
         this.userPassword = userPassword;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getUserFirstName() {
